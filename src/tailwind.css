@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cal-container{
+    @apply w-full min-h-screen flex items-center justify-center 
+}
+.calculator-t{
+    @apply w-[400px] h-[500px] bg-[#636e72] rounded-sm shadow-xl 
+}
+input[type=text]{
+    @apply w-[380px] h-[80px] p-[8px] my-3 outline-none border-none text-2xl
+}
+td{
+    @apply text-center  
+}
+tr{
+    @apply p-3
+}
+input[type=button]{
+   @apply w-[98px] h-[80px] text-[28px] bg-[#2d3436] text-[white] ease-out cursor-pointer rounded-[2px]
+}
+input[type=button]:hover{
+    @apply bg-[#5f27cd] transition duration-300 outline-none
+}
+#btdelete:hover{
+    @apply bg-[#ff6b6b]
+}
+#btdelete{
+    @apply bg-black
+}

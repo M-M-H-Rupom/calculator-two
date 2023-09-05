@@ -1,0 +1,10 @@
+{
+    "workbench.preferredDarkColorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Default High Contrast",
+    "workbench.iconTheme": "vs-seti",
+    "workbench.preferredHighContrastLightColorTheme": "Default High Contrast Light"
+}
+{
+    "css.validate" : false ,
+    "tailwindcss.emmetCompletions" : true 
+}
