@@ -1,29 +1,39 @@
-//
+let mydisplay = ''; 
+let myOperator = true; 
 
-const display= (value) => {
-    document.getElementById("result").value += value;
+let updateDisplay = () => {
+    document.getElementById('result').value = mydisplay;
 }
-const clearall = () => {
-    document.getElementById("result").value = ""
- }
- const calculate = () => {
-    const input = document.getElementById("result").value;
-    
-    try {
-        const results = eval(input);
-        if (typeof results === 'number' && isFinite(results)) {
-            document.getElementById("result").value = results;
+
+const display =(value) => {
+    if (myOperator || !isNaN(value)) {
+        mydisplay += value;
+        if (!isNaN(value)) {
+            myOperator = true; 
         } else {
-            document.getElementById("result").value = "Error";
+            myOperator = false; 
         }
-    } catch (error) {
-        document.getElementById("result").value = "Error";
+        updateDisplay();
     }
 }
 
-const deleteprevious = () => {
-    var c = document.getElementById("result").value;
-    var d = c.toString().slice(0,-1);
-    document.getElementById("result").value = d;
+const clearall = () => {
+    mydisplay = '';
+    myOperator = true; 
+     updateDisplay();
 }
 
+const calculate = () => {
+    try {
+        mydisplay = eval(mydisplay).toString();
+        updateDisplay();
+    } catch (error) {
+        mydisplay = 'Error';
+        updateDisplay();
+    }
+}
+const deleteprevious = () => {
+        var c = document.getElementById("result").value;
+        var d = c.toString().slice(0,-1);
+        document.getElementById("result").value = d;
+}
