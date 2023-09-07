@@ -25,15 +25,27 @@ const clearall = () => {
 
 const calculate = () => {
     try {
-        mydisplay = eval(mydisplay).toString();
+        
+        if (/[\d.]$/.test(mydisplay)) {
+            mydisplay = eval(mydisplay).toString();
+        } else {
+            mydisplay = mydisplay.replace(/\([^)]*\)$/, '');
+        }
         updateDisplay();
     } catch (error) {
         mydisplay = 'Error';
         updateDisplay();
     }
 }
+
+
 const deleteprevious = () => {
-        var c = document.getElementById("result").value;
-        var d = c.toString().slice(0,-1);
-        document.getElementById("result").value = d;
+    var displayElement = document.getElementById("result");
+    var currentValue = displayElement.value;
+    if (currentValue.length > 0) {
+        var newValue = currentValue.slice(0, -1);
+        displayElement.value = newValue;
+        mydisplay = newValue; 
+        myOperator = !isNaN(newValue[newValue.length - 1]);
+    }
 }
