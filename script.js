@@ -25,8 +25,16 @@ const clearall = () => {
 
 const calculate = () => {
     try {
-        
-        if (/[\d.]$/.test(mydisplay)) {
+        if (mydisplay.includes("√")) {
+            // Handle square root calculation
+            const numberToSquareRoot = parseFloat(mydisplay.replace("√", ""));
+            if (!isNaN(numberToSquareRoot) && numberToSquareRoot >= 0) {
+                mydisplay = Math.sqrt(numberToSquareRoot).toString();
+            } else {
+                mydisplay = 'Error';
+            }
+        } else if (/[\d.]$/.test(mydisplay)) {
+            // Handle other calculations
             mydisplay = eval(mydisplay).toString();
         } else {
             mydisplay = mydisplay.replace(/\([^)]*\)$/, '');
@@ -37,6 +45,8 @@ const calculate = () => {
         updateDisplay();
     }
 }
+
+
 
 
 const deleteprevious = () => {
